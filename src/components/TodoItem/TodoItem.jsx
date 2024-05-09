@@ -1,55 +1,29 @@
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import styles from './todoItem.module.css';
 
-export const TodoItem = ({
-	userId,
-	title,
-	completed,
-	onClick,
-	id,
-	deleting,
-	changeTodo,
-}) => {
-	return (
-		<div
-			className={`${styles.todo__item} ${
-				completed ? styles.todo__done : styles.todo__active
-			}`}
-			id={id}
-		>
-			<div>
-				<p className={styles.todo__user}>User: {userId}</p>
-				<p className={styles.todo__title}>{title}</p>
-			</div>
+import { URL } from '../../constants';
 
-			<div>
-				<button
-					className={styles.todo__BTN}
-					type="button"
-					onClick={() => changeTodo(id)}
-				>
-					Изменить
-				</button>
-				<button
-					className={styles.todo__BTN}
-					type="button"
-					disabled={deleting}
-					onClick={() => onClick(id)}
-				>
-					Удалить
-				</button>
-			</div>
+export const TodoItem = () => {
+	const [todo, setTodo] = useState(null);
+
+	const params = useParams();
+
+	useEffect(() => {
+		fetch(URL)
+			.then(loadedData => loadedData.json())
+			.then(loadedTodos => {
+				const item = loadedTodos.find(el => el.id === Number(params.id));
+				setTodo(item);
+			});
+	}, [params.id]);
+
+	return (
+		<div className={styles.todo__container}>
+			Card of ToDo
+			{todo && todo.title}
+			<Link to="/">Main Page</Link>
 		</div>
 	);
-};
-
-TodoItem.propTypes = {
-	userId: PropTypes.number,
-	title: PropTypes.string,
-	completed: PropTypes.bool,
-	onClick: PropTypes.func,
-	changeTodo: PropTypes.func,
-	id: PropTypes.number,
-	deleting: PropTypes.bool,
 };

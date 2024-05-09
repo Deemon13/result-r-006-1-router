@@ -1,13 +1,24 @@
 // import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 
 // import styles from './app.module.css';
 
-const Todos = () => <div>Todos</div>;
-const NotFound = () => <div>Не корректный адрес</div>;
+const Todos = () => (
+	<div>
+		Todos
+		<Link to="/">Main Page</Link>
+	</div>
+);
+const NotFound = () => (
+	<div>
+		Не корректный адрес
+		<Link to="/">Main Page</Link>
+	</div>
+);
 
 import {
 	MainPage,
+	TodoItem,
 	// FormCreateTodo,
 	// Loader,
 	// TodoItem,
@@ -15,6 +26,7 @@ import {
 	// Sorter,
 	// TodoChanger,
 } from '../../components';
+// import { TodoItem } from '../TodoItem/TodoItem';
 
 // import {
 // 	useGetTodos,
@@ -86,7 +98,11 @@ export const App = () => {
 			{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />} */}
 			<Routes>
 				<Route path="/" element={<MainPage />} />
-				<Route path="/todos" element={<Todos />} />
+				<Route path="todos" element={<Todos />} />
+				<Route path="todo/:id" element={<TodoItem />} />
+				{/* <Route path="*" element={<NotFound />} /> */}
+				<Route path="/404" element={<NotFound />} />
+				<Route path="*" element={<Navigate to="/404" />} />
 			</Routes>
 		</div>
 	);

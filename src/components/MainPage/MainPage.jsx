@@ -5,7 +5,7 @@ import styles from './mainpage.module.css';
 import {
 	FormCreateTodo,
 	Loader,
-	TodoItem,
+	TodoItemCard,
 	Filter,
 	Sorter,
 	TodoChanger,
@@ -64,7 +64,7 @@ export const MainPage = () => {
 				) : (
 					(filter ? filteredTodos : sortBy ? sortedTodos : todos).map(
 						({ id, userId, title, completed }) => (
-							<TodoItem
+							<TodoItemCard
 								key={id}
 								userId={userId}
 								title={title}

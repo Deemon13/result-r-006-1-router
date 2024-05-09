@@ -1,6 +1,7 @@
 export * from './App/App';
 export * from './MainPage/MainPage';
 export * from './Loader/Loader';
+export * from './TodoItemCard/TodoItemCard';
 export * from './TodoItem/TodoItem';
 export * from './FormCreateTodo/FormCreateTodo';
 export * from './Filter/Filter';
