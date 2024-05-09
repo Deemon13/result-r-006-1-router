@@ -1,28 +1,34 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { URL } from '../constants';
 
-export const useDeleteTodo = (refreshTodos, setFilter) => {
-	const [isDeleting, setIsDeleting] = useState(false);
+// export const useDeleteTodo = (refreshTodos, setFilter) => {
+export const useDeleteTodo = () => {
+	// const [isDeleting, setIsDeleting] = useState(false);
+
+	const navigate = useNavigate();
 
 	const deleteTodo = id => {
-		setIsDeleting(true);
+		// setIsDeleting(true);
 
 		fetch(URL + `/${id}`, {
 			method: 'DELETE',
 		})
 			.then(rawResponse => rawResponse.json())
-			.then(() => {
-				refreshTodos();
-				setFilter('');
-			})
+			// .then(() => {
+			// refreshTodos();
+			// setFilter('');
+			// 	navigate('/');
+			// })
 			.finally(() => {
-				setIsDeleting(false);
+				navigate('/');
+				// setIsDeleting(false);
 			});
 	};
 
 	return {
-		isDeleting,
+		// isDeleting,
 		deleteTodo,
 	};
 };

@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import styles from './todoItem.module.css';
 
 import { URL } from '../../constants';
 
-export const TodoItem = () => {
+export const TodoItem = ({ onClick }) => {
 	const [todo, setTodo] = useState(null);
 
 	const params = useParams();
@@ -35,6 +36,22 @@ export const TodoItem = () => {
 				Completed:
 				{todo ? ` ${todo.completed}` : ' Loading...'}
 			</p>
+			<div>
+				<button
+					className={styles.todo__BTN}
+					type="button"
+					// onClick={() => changeTodo(id)}
+				>
+					Изменить
+				</button>
+				<button
+					className={styles.todo__BTN}
+					type="button"
+					onClick={() => onClick(params.id)}
+				>
+					Удалить
+				</button>
+			</div>
 			<p>
 				<Link onClick={() => navigate(-1)}>Back</Link>
 			</p>
@@ -43,4 +60,8 @@ export const TodoItem = () => {
 			</p>
 		</div>
 	);
+};
+
+TodoItem.propTypes = {
+	onClick: PropTypes.func,
 };

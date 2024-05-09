@@ -28,14 +28,14 @@ import {
 } from '../../components';
 // import { TodoItem } from '../TodoItem/TodoItem';
 
-// import {
-// 	useGetTodos,
-// 	useCreateTodo,
-// 	useDeleteTodo,
-// 	useChangeTodo,
-// 	useSort,
-// 	useFilter,
-// } from '../../hooks';
+import {
+	// 	useGetTodos,
+	// 	useCreateTodo,
+	useDeleteTodo,
+	// 	useChangeTodo,
+	// 	useSort,
+	// 	useFilter,
+} from '../../hooks';
 
 export const App = () => {
 	// const [isChanging, setIsChanging] = useState(false);
@@ -48,7 +48,7 @@ export const App = () => {
 
 	// const { todos, isLoading } = useGetTodos(refreshTodosFlag);
 	// const { isCreating, createTodo } = useCreateTodo(refreshTodos);
-	// const { isDeleting, deleteTodo } = useDeleteTodo(refreshTodos, setFilter);
+	const { deleteTodo } = useDeleteTodo();
 	// const { submitChanges } = useChangeTodo(
 	// 	idForChange,
 	// 	refreshTodos,
@@ -99,7 +99,7 @@ export const App = () => {
 			<Routes>
 				<Route path="/" element={<MainPage />} />
 				<Route path="todos" element={<Todos />} />
-				<Route path="todo/:id" element={<TodoItem />} />
+				<Route path="todo/:id" element={<TodoItem onClick={deleteTodo} />} />
 				{/* <Route path="*" element={<NotFound />} /> */}
 				<Route path="/404" element={<NotFound />} />
 				<Route path="*" element={<Navigate to="/404" />} />

@@ -7,9 +7,9 @@ export const TodoItemCard = ({
 	userId,
 	title,
 	completed,
-	onClick,
+	// onClick,
 	id,
-	deleting,
+	// deleting,
 	changeTodo,
 }) => {
 	return (
@@ -33,14 +33,14 @@ export const TodoItemCard = ({
 					>
 						Изменить
 					</button>
-					<button
+					{/* <button
 						className={styles.todo__BTN}
 						type="button"
 						disabled={deleting}
 						onClick={() => onClick(id)}
 					>
 						Удалить
-					</button>
+					</button> */}
 				</div>
 			</Link>
 		</div>
@@ -51,8 +51,8 @@ TodoItemCard.propTypes = {
 	userId: PropTypes.number,
 	title: PropTypes.string,
 	completed: PropTypes.bool,
-	onClick: PropTypes.func,
+	// onClick: PropTypes.func,
 	changeTodo: PropTypes.func,
 	id: PropTypes.number,
-	deleting: PropTypes.bool,
+	// deleting: PropTypes.bool,
 };

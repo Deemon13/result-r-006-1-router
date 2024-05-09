@@ -14,7 +14,7 @@ import {
 import {
 	useGetTodos,
 	useCreateTodo,
-	useDeleteTodo,
+	// useDeleteTodo,
 	useChangeTodo,
 	useSort,
 	useFilter,
@@ -31,7 +31,7 @@ export const MainPage = () => {
 
 	const { todos, isLoading } = useGetTodos(refreshTodosFlag);
 	const { isCreating, createTodo } = useCreateTodo(refreshTodos);
-	const { isDeleting, deleteTodo } = useDeleteTodo(refreshTodos, setFilter);
+	// const { isDeleting, deleteTodo } = useDeleteTodo(refreshTodos, setFilter);
 	const { submitChanges } = useChangeTodo(
 		idForChange,
 		refreshTodos,
@@ -69,10 +69,10 @@ export const MainPage = () => {
 								userId={userId}
 								title={title}
 								completed={completed}
-								onClick={deleteTodo}
+								// onClick={deleteTodo}
 								changeTodo={requestTochangeTodo}
 								id={id}
-								deleting={isDeleting}
+								// deleting={isDeleting}
 							/>
 						),
 					)
