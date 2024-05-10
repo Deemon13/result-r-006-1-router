@@ -52,8 +52,8 @@ export const TodoItem = () => {
 		// console.log('newId: ', newId);
 		// setIdForChange(prevState => prevState + Number(id));
 		setIsChanging(true);
-		console.log('idForChange: ', idForChange);
-		console.log('isChanging: ', isChanging);
+		// console.log('idForChange: ', idForChange);
+		// console.log('isChanging: ', isChanging);
 	};
 
 	return (

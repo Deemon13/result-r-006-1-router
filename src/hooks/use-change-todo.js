@@ -7,7 +7,7 @@ export const useChangeTodo = (id, setIsChanging) => {
 
 		const form = event.currentTarget;
 		const newTitle = form.elements.changeTodo.value;
-		console.log(newTitle);
+		// console.log(newTitle);
 
 		fetch(URL + `/${id}`, {
 			method: 'PUT',
@@ -23,7 +23,7 @@ export const useChangeTodo = (id, setIsChanging) => {
 				// refreshTodos();
 				// setFilter('');
 				setIsChanging(false);
-				console.log('Changing...');
+				// console.log('Changing...');
 			});
 	};
 
