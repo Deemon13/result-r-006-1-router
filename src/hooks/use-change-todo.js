@@ -1,13 +1,11 @@
 import { URL } from '../constants';
 
-// export const useChangeTodo = (id, refreshTodos, setFilter, setIsChanging) => {
 export const useChangeTodo = (id, setIsChanging) => {
 	const submitChanges = event => {
 		event.preventDefault();
 
 		const form = event.currentTarget;
 		const newTitle = form.elements.changeTodo.value;
-		// console.log(newTitle);
 
 		fetch(URL + `/${id}`, {
 			method: 'PUT',
@@ -20,10 +18,7 @@ export const useChangeTodo = (id, setIsChanging) => {
 		})
 			.then(rawResponse => rawResponse.json())
 			.then(() => {
-				// refreshTodos();
-				// setFilter('');
 				setIsChanging(false);
-				// console.log('Changing...');
 			});
 	};
 

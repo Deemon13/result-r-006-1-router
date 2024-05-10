@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
 import { TodoChanger } from '../../components';
 
@@ -8,14 +7,9 @@ import styles from './todoItem.module.css';
 
 import { URL } from '../../constants';
 
-import {
-	// 	useGetTodos,
-	// 	useCreateTodo,
-	useDeleteTodo,
-	useChangeTodo,
-	// 	useSort,
-	// 	useFilter,
-} from '../../hooks';
+import { useDeleteTodo, useChangeTodo } from '../../hooks';
+
+// const LOADING_TIMEOUT = 5000;
 
 export const TodoItem = () => {
 	const [todo, setTodo] = useState(null);
@@ -25,35 +19,41 @@ export const TodoItem = () => {
 	const params = useParams();
 	const navigate = useNavigate();
 
-	const { submitChanges } = useChangeTodo(
-		idForChange,
-		// refreshTodos,
-		// setFilter,
-		setIsChanging,
-	);
+	const { submitChanges } = useChangeTodo(idForChange, setIsChanging);
 	const { deleteTodo } = useDeleteTodo();
 
-	// let newId = params.id;
-	// setIdForChange(newId);
-
 	useEffect(() => {
+		// let isLoadingTimeout = false;
+		// let isTodoLoaded = false;
+
+		// setTimeout(() => {
+		// 	isLoadingTimeout = true;
+
+		// 	if (!isTodoLoaded) {
+		// 		navigate('/todo-load-error');
+		// 	}
+		// }, LOADING_TIMEOUT);
+
 		fetch(URL)
 			.then(loadedData => loadedData.json())
 			.then(loadedTodos => {
+				// isTodoLoaded = true;
 				const item = loadedTodos.find(el => el.id === Number(params.id));
+
+				// if (!isLoadingTimeout) {
+				// 	if (!loadedTodos) {
+				// 		navigate('/todo-not-exist');
+				// 		return;
+				// 	}
+
 				setTodo(item);
 				setIdForChange(params.id);
+				// }
 			});
-	}, [params.id, isChanging]);
+	}, [params.id, isChanging, navigate]);
 
 	const requestTochangeTodo = () => {
-		// console.log('id: ', id);
-		// newId = id;
-		// console.log('newId: ', newId);
-		// setIdForChange(prevState => prevState + Number(id));
 		setIsChanging(true);
-		// console.log('idForChange: ', idForChange);
-		// console.log('isChanging: ', isChanging);
 	};
 
 	return (
