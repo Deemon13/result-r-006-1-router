@@ -15,39 +15,39 @@ import {
 	useGetTodos,
 	useCreateTodo,
 	// useDeleteTodo,
-	useChangeTodo,
+	// useChangeTodo,
 	useSort,
 	useFilter,
 } from '../../hooks';
 
 export const MainPage = () => {
-	const [isChanging, setIsChanging] = useState(false);
+	// const [isChanging, setIsChanging] = useState(false);
 	const [refreshTodosFlag, setRefreshTodosFlag] = useState(false);
 	const [filter, setFilter] = useState('');
 	const [filteredTodos, setFilteredTodos] = useState([]);
-	const [idForChange, setIdForChange] = useState(null);
+	// const [idForChange, setIdForChange] = useState(null);
 
 	const refreshTodos = () => setRefreshTodosFlag(!refreshTodosFlag);
 
 	const { todos, isLoading } = useGetTodos(refreshTodosFlag);
 	const { isCreating, createTodo } = useCreateTodo(refreshTodos);
 	// const { isDeleting, deleteTodo } = useDeleteTodo(refreshTodos, setFilter);
-	const { submitChanges } = useChangeTodo(
-		idForChange,
-		refreshTodos,
-		setFilter,
-		setIsChanging,
-	);
+	// const { submitChanges } = useChangeTodo(
+	// 	idForChange,
+	// 	refreshTodos,
+	// 	setFilter,
+	// 	setIsChanging,
+	// );
 	const { sortBy, sortedTodos, handleSort } = useSort(todos);
 	const { handleFilter } = useFilter(todos, filter, setFilteredTodos, setFilter);
 
-	let newId = null;
+	// let newId = null;
 
-	const requestTochangeTodo = id => {
-		newId = id;
-		setIdForChange(newId);
-		setIsChanging(true);
-	};
+	// const requestTochangeTodo = id => {
+	// 	newId = id;
+	// 	setIdForChange(newId);
+	// 	setIsChanging(true);
+	// };
 
 	return (
 		<div className={styles.app}>
@@ -70,7 +70,7 @@ export const MainPage = () => {
 								title={title}
 								completed={completed}
 								// onClick={deleteTodo}
-								changeTodo={requestTochangeTodo}
+								// changeTodo={requestTochangeTodo}
 								id={id}
 								// deleting={isDeleting}
 							/>
@@ -78,8 +78,8 @@ export const MainPage = () => {
 					)
 				)}
 			</div>
-			ToDoChanger
-			{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />}
+			{/* ToDoChanger
+			{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />} */}
 		</div>
 	);
 };

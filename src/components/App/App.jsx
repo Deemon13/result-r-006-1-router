@@ -3,12 +3,12 @@ import { Routes, Route, Link, Navigate } from 'react-router-dom';
 
 // import styles from './app.module.css';
 
-const Todos = () => (
-	<div>
-		Todos
-		<Link to="/">Main Page</Link>
-	</div>
-);
+// const Todos = () => (
+// 	<div>
+// 		Todos
+// 		<Link to="/">Main Page</Link>
+// 	</div>
+// );
 const NotFound = () => (
 	<div>
 		Не корректный адрес
@@ -28,14 +28,14 @@ import {
 } from '../../components';
 // import { TodoItem } from '../TodoItem/TodoItem';
 
-import {
-	// 	useGetTodos,
-	// 	useCreateTodo,
-	useDeleteTodo,
-	// 	useChangeTodo,
-	// 	useSort,
-	// 	useFilter,
-} from '../../hooks';
+// import {
+// 	useGetTodos,
+// 	useCreateTodo,
+// useDeleteTodo,
+// useChangeTodo,
+// 	useSort,
+// 	useFilter,
+// } from '../../hooks';
 
 export const App = () => {
 	// const [isChanging, setIsChanging] = useState(false);
@@ -48,21 +48,21 @@ export const App = () => {
 
 	// const { todos, isLoading } = useGetTodos(refreshTodosFlag);
 	// const { isCreating, createTodo } = useCreateTodo(refreshTodos);
-	const { deleteTodo } = useDeleteTodo();
-	// const { submitChanges } = useChangeTodo(
-	// 	idForChange,
-	// 	refreshTodos,
-	// 	setFilter,
-	// 	setIsChanging,
-	// );
+	// const { deleteTodo } = useDeleteTodo();
+	// const { submitChanges } = useChangeTodo();
+	// idForChange,
+	// refreshTodos,
+	// setFilter,
+	// setIsChanging,
 	// const { sortBy, sortedTodos, handleSort } = useSort(todos);
 	// const { handleFilter } = useFilter(todos, filter, setFilteredTodos, setFilter);
 
 	// let newId = null;
 
 	// const requestTochangeTodo = id => {
-	// 	newId = id;
-	// 	setIdForChange(newId);
+	// const requestTochangeTodo = () => {
+	// newId = id;
+	// setIdForChange(newId);
 	// 	setIsChanging(true);
 	// };
 
@@ -98,8 +98,8 @@ export const App = () => {
 			{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />} */}
 			<Routes>
 				<Route path="/" element={<MainPage />} />
-				<Route path="todos" element={<Todos />} />
-				<Route path="todo/:id" element={<TodoItem onClick={deleteTodo} />} />
+				{/* <Route path="todos" element={<Todos />} /> */}
+				<Route path="todo/:id" element={<TodoItem />} />
 				{/* <Route path="*" element={<NotFound />} /> */}
 				<Route path="/404" element={<NotFound />} />
 				<Route path="*" element={<Navigate to="/404" />} />

@@ -1,16 +1,40 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+
+import { TodoChanger } from '../../components';
 
 import styles from './todoItem.module.css';
 
 import { URL } from '../../constants';
 
-export const TodoItem = ({ onClick }) => {
+import {
+	// 	useGetTodos,
+	// 	useCreateTodo,
+	useDeleteTodo,
+	useChangeTodo,
+	// 	useSort,
+	// 	useFilter,
+} from '../../hooks';
+
+export const TodoItem = () => {
 	const [todo, setTodo] = useState(null);
+	const [isChanging, setIsChanging] = useState(false);
+	const [idForChange, setIdForChange] = useState(null);
 
 	const params = useParams();
 	const navigate = useNavigate();
+
+	const { submitChanges } = useChangeTodo(
+		idForChange,
+		// refreshTodos,
+		// setFilter,
+		setIsChanging,
+	);
+	const { deleteTodo } = useDeleteTodo();
+
+	// let newId = params.id;
+	// setIdForChange(newId);
 
 	useEffect(() => {
 		fetch(URL)
@@ -18,8 +42,19 @@ export const TodoItem = ({ onClick }) => {
 			.then(loadedTodos => {
 				const item = loadedTodos.find(el => el.id === Number(params.id));
 				setTodo(item);
+				setIdForChange(params.id);
 			});
-	}, [params.id]);
+	}, [params.id, isChanging]);
+
+	const requestTochangeTodo = () => {
+		// console.log('id: ', id);
+		// newId = id;
+		// console.log('newId: ', newId);
+		// setIdForChange(prevState => prevState + Number(id));
+		setIsChanging(true);
+		console.log('idForChange: ', idForChange);
+		console.log('isChanging: ', isChanging);
+	};
 
 	return (
 		<div className={styles.todo__container}>
@@ -40,14 +75,14 @@ export const TodoItem = ({ onClick }) => {
 				<button
 					className={styles.todo__BTN}
 					type="button"
-					// onClick={() => changeTodo(id)}
+					onClick={requestTochangeTodo}
 				>
 					Изменить
 				</button>
 				<button
 					className={styles.todo__BTN}
 					type="button"
-					onClick={() => onClick(params.id)}
+					onClick={() => deleteTodo(params.id)}
 				>
 					Удалить
 				</button>
@@ -58,10 +93,8 @@ export const TodoItem = ({ onClick }) => {
 			<p>
 				<Link to="/">Main Page</Link>
 			</p>
+			ToDoChanger
+			{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />}
 		</div>
 	);
-};
-
-TodoItem.propTypes = {
-	onClick: PropTypes.func,
 };

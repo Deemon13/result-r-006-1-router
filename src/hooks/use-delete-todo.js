@@ -5,6 +5,7 @@ import { URL } from '../constants';
 
 // export const useDeleteTodo = (refreshTodos, setFilter) => {
 export const useDeleteTodo = () => {
+	// console.log('удаляем');
 	// const [isDeleting, setIsDeleting] = useState(false);
 
 	const navigate = useNavigate();

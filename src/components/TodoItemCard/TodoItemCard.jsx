@@ -10,7 +10,7 @@ export const TodoItemCard = ({
 	// onClick,
 	id,
 	// deleting,
-	changeTodo,
+	// changeTodo,
 }) => {
 	return (
 		<div
@@ -26,13 +26,13 @@ export const TodoItemCard = ({
 				</div>
 
 				<div>
-					<button
+					{/* <button
 						className={styles.todo__BTN}
 						type="button"
 						onClick={() => changeTodo(id)}
 					>
 						Изменить
-					</button>
+					</button> */}
 					{/* <button
 						className={styles.todo__BTN}
 						type="button"
@@ -52,7 +52,7 @@ TodoItemCard.propTypes = {
 	title: PropTypes.string,
 	completed: PropTypes.bool,
 	// onClick: PropTypes.func,
-	changeTodo: PropTypes.func,
+	// changeTodo: PropTypes.func,
 	id: PropTypes.number,
 	// deleting: PropTypes.bool,
 };
