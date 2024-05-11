@@ -1,4 +1,31 @@
+.notFound__container {
+	background-color: #fff9f0;
+	padding: 15px;
+	border-radius: 5px;
+	color: #323232;
+	border: 3px solid #323232;
+
+	text-align: left;
+}
+
 .notFound__link {
 	text-decoration: none;
 	color: #323232;
+}
+
+.notFound__link:hover {
+	color: #ff6c00;
+}
+
+.notFound__404 {
+	display: block;
+	margin-top: 50px;
+	font-size: 42px;
+	text-align: center;
+}
+
+.notFound__text {
+	display: block;
+	margin-top: 50px;
+	text-align: center;
 }
