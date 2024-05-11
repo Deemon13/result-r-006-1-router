@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
 
 import { TodoChanger } from '../../components';
 
@@ -7,13 +7,14 @@ import styles from './todoItem.module.css';
 
 import { URL } from '../../constants';
 
-import { useDeleteTodo, useChangeTodo } from '../../hooks';
+import { useDeleteTodo, useChangeTodo, useUpdateStatusTodo } from '../../hooks';
 
 // const LOADING_TIMEOUT = 5000;
 
 export const TodoItem = () => {
 	const [todo, setTodo] = useState(null);
 	const [isChanging, setIsChanging] = useState(false);
+	const [isComplete, setIsComplete] = useState(false);
 	const [idForChange, setIdForChange] = useState(null);
 
 	const params = useParams();
@@ -21,6 +22,7 @@ export const TodoItem = () => {
 
 	const { submitChanges } = useChangeTodo(idForChange, setIsChanging);
 	const { deleteTodo } = useDeleteTodo();
+	const { updateStatus } = useUpdateStatusTodo(idForChange, isComplete, setIsComplete);
 
 	useEffect(() => {
 		// let isLoadingTimeout = false;
@@ -48,6 +50,7 @@ export const TodoItem = () => {
 
 				setTodo(item);
 				setIdForChange(params.id);
+				item ? setIsComplete(item.completed) : setIsComplete(false);
 				// }
 			});
 	}, [params.id, isChanging, navigate]);
@@ -56,45 +59,66 @@ export const TodoItem = () => {
 		setIsChanging(true);
 	};
 
+	const status = isComplete ? 'Done' : 'In progress';
+
 	return (
-		<div className={styles.todo__container}>
-			<h2>Card of ToDo</h2>
-			<p>
-				UserId:
-				{todo ? ` ${todo.userId}` : ' Loading...'}
-			</p>
-			<p>
-				Title:
-				{todo ? ` ${todo.title}` : ' Loading...'}
-			</p>
-			<p>
-				Completed:
-				{todo ? ` ${todo.completed}` : ' Loading...'}
-			</p>
-			<div>
-				<button
-					className={styles.todo__BTN}
-					type="button"
-					onClick={requestTochangeTodo}
-				>
-					Изменить
-				</button>
-				<button
-					className={styles.todo__BTN}
-					type="button"
-					onClick={() => deleteTodo(params.id)}
-				>
-					Удалить
-				</button>
+		<div
+			className={`${styles.todo__container} ${
+				isComplete ? styles.todo__containerDone : styles.todo__containerActive
+			}`}
+		>
+			<div className={styles.todo__nav}>
+				<NavLink onClick={() => navigate(-1)} className={styles.todo__link}>
+					Back
+				</NavLink>
+
+				<NavLink to="/" className={styles.todo__link}>
+					Main Page
+				</NavLink>
 			</div>
-			<p>
-				<Link onClick={() => navigate(-1)}>Back</Link>
-			</p>
-			<p>
-				<Link to="/">Main Page</Link>
-			</p>
-			ToDoChanger
-			{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />}
+			<div className={styles.todo__card}>
+				<h2 className={styles.todo__title}>Card of ToDo</h2>
+				<p>
+					<span className={styles.todo__field}>UserID:</span>
+					{todo ? `${todo.userId}` : 'Loading...'}
+				</p>
+				<p>
+					<span className={styles.todo__field}>Title:</span>
+					<span className={styles.todo__title}>
+						{todo ? `${todo.title}` : 'Loading...'}
+					</span>
+				</p>
+				<p>
+					<span className={styles.todo__field}>Status:</span>
+					<button
+						type="button"
+						className={styles.todo__status}
+						onClick={updateStatus}
+					>
+						{todo ? `${status}` : 'Loading...'}
+					</button>
+				</p>
+				<div className={styles.todo__BTNContainer}>
+					<button
+						className={styles.todo__BTN}
+						type="button"
+						onClick={requestTochangeTodo}
+					>
+						Изменить
+					</button>
+					<button
+						className={styles.todo__BTN}
+						type="button"
+						onClick={() => deleteTodo(params.id)}
+					>
+						Удалить
+					</button>
+				</div>
+			</div>
+			<div className={styles.todo__changer}>
+				{/* ToDoChanger */}
+				{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />}
+			</div>
 		</div>
 	);
 };

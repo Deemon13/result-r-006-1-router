@@ -5,17 +5,19 @@ import styles from './filter.module.css';
 export const Filter = ({ value, onChange }) => {
 	return (
 		<form className={styles.filter}>
-			<label htmlFor="filter" className={styles.filter__label}>
-				Искать Todo:
-			</label>
-			<input
-				id="filter"
-				type="text"
-				name="filter"
-				value={value}
-				onChange={onChange}
-				className={styles.filter__input}
-			/>
+			<div className={styles.filter__container}>
+				<label htmlFor="filter" className={styles.filter__label}>
+					Искать Todo:
+				</label>
+				<input
+					id="filter"
+					type="text"
+					name="filter"
+					value={value}
+					onChange={onChange}
+					className={styles.filter__input}
+				/>
+			</div>
 		</form>
 	);
 };

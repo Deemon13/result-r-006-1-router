@@ -1,5 +1,89 @@
 .todo__container {
-	width: 200px;
-	height: 400px;
-	border: 1px solid red;
+	background-color: #fff9f0;
+	border-radius: 5px;
+	color: #323232;
+	border: 3px solid #323232;
+}
+
+.todo__containerActive {
+	border-color: #ff2f2f;
+}
+
+.todo__containerDone {
+	border-color: #028502;
+}
+
+.todo__nav {
+	display: flex;
+	justify-content: flex-start;
+	gap: 10px;
+}
+
+.todo__link {
+	text-decoration: none;
+	color: #323232;
+}
+
+.todo__link:hover {
+	/* background-color: #323232; */
+	color: #ff6c00;
+}
+
+.todo__field {
+	font-weight: 600;
+	margin-right: 5px;
+}
+
+.todo__title {
+	word-break: break-all;
+}
+
+.todo__status {
+	max-width: fit-content;
+	margin: 0 auto;
+	border: 1px solid #323232;
+	outline: none;
+	color: #323232;
+	background-color: transparent;
+	border-radius: 5px;
+	padding: 2px 10px 2px;
+}
+
+.todo__status:hover {
+	cursor: pointer;
+	border-color: #ff6c00;
+	color: #ff6c00;
+	background-color: #323232;
+}
+
+.todo__status:active {
+	transform: scale(0.9);
+}
+
+.todo__BTNContainer {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 10px;
+}
+
+.todo__BTN {
+	max-width: fit-content;
+	margin: 0 auto;
+	border: 1px solid #323232;
+	outline: none;
+	color: #323232;
+	background-color: transparent;
+	border-radius: 5px;
+	padding: 2px 10px 2px;
+}
+
+.todo__BTN:hover {
+	cursor: pointer;
+	border-color: #ff6c00;
+	color: #ff6c00;
+	background-color: #323232;
+}
+
+.todo__BTN:active {
+	transform: scale(0.9);
 }

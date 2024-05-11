@@ -1,34 +1,42 @@
 .todo__item {
-	width: 100px;
-	height: 200px;
-	display: flex;
+	/* width: 100px; */
+	/* height: 200px; */
+	/* display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-between; */
 	padding: 5px;
-	border: 1px solid #adff2f;
+	border: 2px solid #323232;
 	border-radius: 5px;
+	text-align: left;
 
-	color: #ffffff;
+	/* color: #323232; */
 }
 
 .todo__done {
-	border-color: #adff2f;
+	border-color: #028502;
 }
 
 .todo__active {
 	border-color: #ff2f2f;
 }
 
+.todo__link {
+	text-decoration: none;
+	color: #323232;
+	border-radius: 5px;
+}
+
 .todo__user {
-	margin-top: 0;
-	margin-bottom: 10px;
+	font-weight: 600;
+	/* margin-top: 0;
+	margin-bottom: 0;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #ffffff;
 
-	text-transform: uppercase;
+	text-transform: uppercase; */
 }
 
-.todo__title {
+/* .todo__title {
 	height: 100px;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -38,9 +46,19 @@
 	overflow-x: hidden;
 
 	word-break: break-all;
+} */
+
+.todo__link:hover {
+	background-color: #323232;
+	color: #ff6c00;
 }
 
-.todo__BTN {
+/* .todo__link:hover > .todo__user {
+	background-color: #323232;
+	color: #ff6c00;
+} */
+
+/* .todo__BTN {
 	width: 100%;
 	border: 1px solid #ffffff;
 	outline: none;
@@ -61,4 +79,4 @@
 
 .todo__BTN:disabled {
 	pointer-events: none;
-}
+} */

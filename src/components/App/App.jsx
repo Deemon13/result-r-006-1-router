@@ -1,5 +1,7 @@
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
 
+import styles from './app.module.css';
+
 const NotFound = () => (
 	<div>
 		Не корректный адрес
@@ -11,7 +13,7 @@ import { MainPage, TodoItem } from '../../components';
 
 export const App = () => {
 	return (
-		<div>
+		<div className={styles.app}>
 			<Routes>
 				<Route path="/" element={<MainPage />} />
 				<Route path="todo/:id" element={<TodoItem />} />

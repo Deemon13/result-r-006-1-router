@@ -1,25 +1,24 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import styles from './todoItemCard.module.css';
 
 export const TodoItemCard = ({ userId, title, completed, id }) => {
 	return (
-		<div
-			className={`${styles.todo__item} ${
-				completed ? styles.todo__done : styles.todo__active
-			}`}
-			id={id}
-		>
-			<Link to={`todo/${id}`}>
-				<div>
-					<p className={styles.todo__user}>User: {userId}</p>
-					<p className={styles.todo__title}>{title}</p>
+		<NavLink to={`todo/${id}`} className={styles.todo__link}>
+			<div
+				className={`${styles.todo__item} ${
+					completed ? styles.todo__done : styles.todo__active
+				}`}
+				id={id}
+			>
+				<div className={styles.todo__user}>
+					User: {userId} - {title}
 				</div>
 
-				<div></div>
-			</Link>
-		</div>
+				{/* <div></div> */}
+			</div>
+		</NavLink>
 	);
 };
 

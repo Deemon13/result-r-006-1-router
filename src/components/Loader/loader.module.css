@@ -4,22 +4,22 @@
 	border-radius: 100px;
 	align-items: center;
 	position: fixed;
-	top: 50%;
-	left: 30%;
-	transform: translate(0, -50%);
-	transform: rotate(-90deg);
+	bottom: 95%;
+	left: 50%;
+	transform: translate(-50%, 50%);
+	/* transform: rotate(0deg); */
 	padding: 0 5px;
 	display: flex;
-	height: 40px;
-	width: 250px;
+	height: 20px;
+	width: 200px;
 }
 
 .progressValue {
 	animation: load 3s infinite;
-	box-shadow: 0 10px 40px -10px #fff;
-	border-radius: 100px;
-	background: #fff;
-	height: 30px;
+	box-shadow: 0 10px 20px -10px #00ff00;
+	border-radius: 50px;
+	background: #00ff00;
+	height: 20px;
 	width: 0;
 }
 
