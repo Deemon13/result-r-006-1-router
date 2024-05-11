@@ -26,7 +26,7 @@
     },
     {
       "userId": 1,
-      "completed": false,
+      "completed": true,
       "title": "asdasdas",
       "id": 20
     },

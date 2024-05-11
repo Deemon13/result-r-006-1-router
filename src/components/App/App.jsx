@@ -2,7 +2,13 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import styles from './app.module.css';
 
-import { MainPage, TodoItem, NotFound } from '../../components';
+import {
+	MainPage,
+	TodoItem,
+	NotFound,
+	TodoNotFound,
+	TodoLoadError,
+} from '../../components';
 
 export const App = () => {
 	return (
@@ -12,8 +18,8 @@ export const App = () => {
 				<Route path="todo/:id" element={<TodoItem />} />
 				<Route path="/404" element={<NotFound />} />
 				<Route path="*" element={<Navigate to="/404" />} />
-				{/* <Route path="/todo-load-error" element={<Navigate to="/404" />} />
-				<Route path="/todo-not-exist" element={<Navigate to="/404" />} /> */}
+				<Route path="/todo-load-error" element={<TodoLoadError />} />
+				<Route path="/todo-not-exist" element={<TodoNotFound />} />
 			</Routes>
 		</div>
 	);

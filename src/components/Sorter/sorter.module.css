@@ -32,4 +32,6 @@
 
 .sorter:disabled {
 	pointer-events: none;
+	border-color: #858585;
+	color: #858585;
 }

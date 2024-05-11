@@ -9,7 +9,7 @@ import { URL } from '../../constants';
 
 import { useDeleteTodo, useChangeTodo, useUpdateStatusTodo } from '../../hooks';
 
-// const LOADING_TIMEOUT = 5000;
+const LOADING_TIMEOUT = 5000;
 
 export const TodoItem = () => {
 	const [todo, setTodo] = useState(null);
@@ -25,33 +25,32 @@ export const TodoItem = () => {
 	const { updateStatus } = useUpdateStatusTodo(idForChange, isComplete, setIsComplete);
 
 	useEffect(() => {
-		// let isLoadingTimeout = false;
-		// let isTodoLoaded = false;
+		let isLoadingTimeout = false;
+		let isTodoLoaded = false;
 
-		// setTimeout(() => {
-		// 	isLoadingTimeout = true;
+		setTimeout(() => {
+			isLoadingTimeout = true;
 
-		// 	if (!isTodoLoaded) {
-		// 		navigate('/todo-load-error');
-		// 	}
-		// }, LOADING_TIMEOUT);
+			if (!isTodoLoaded) {
+				navigate('/todo-load-error');
+			}
+		}, LOADING_TIMEOUT);
 
 		fetch(URL)
 			.then(loadedData => loadedData.json())
 			.then(loadedTodos => {
-				// isTodoLoaded = true;
 				const item = loadedTodos.find(el => el.id === Number(params.id));
 
-				// if (!isLoadingTimeout) {
-				// 	if (!loadedTodos) {
-				// 		navigate('/todo-not-exist');
-				// 		return;
-				// 	}
-
-				setTodo(item);
-				setIdForChange(params.id);
-				item ? setIsComplete(item.completed) : setIsComplete(false);
-				// }
+				isTodoLoaded = true;
+				if (!isLoadingTimeout) {
+					if (!loadedTodos) {
+						navigate('/todo-not-exist');
+						return;
+					}
+					setTodo(item);
+					setIdForChange(params.id);
+					item ? setIsComplete(item.completed) : setIsComplete(false);
+				}
 			});
 	}, [params.id, isChanging, navigate]);
 
@@ -94,6 +93,7 @@ export const TodoItem = () => {
 						type="button"
 						className={styles.todo__status}
 						onClick={updateStatus}
+						disabled={!todo}
 					>
 						{todo ? `${status}` : 'Loading...'}
 					</button>
@@ -103,6 +103,7 @@ export const TodoItem = () => {
 						className={styles.todo__BTN}
 						type="button"
 						onClick={requestTochangeTodo}
+						disabled={!todo}
 					>
 						Изменить
 					</button>
@@ -110,6 +111,7 @@ export const TodoItem = () => {
 						className={styles.todo__BTN}
 						type="button"
 						onClick={() => deleteTodo(params.id)}
+						disabled={!todo}
 					>
 						Удалить
 					</button>
