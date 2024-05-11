@@ -2,15 +2,9 @@
 	max-width: 80%;
 	margin: 0 auto;
 	padding: 0 15px 10px;
-	/* margin-bottom: 20px; */
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-
-	/* border-top: 1px solid #323232; */
-
-	/* border: 1px solid #ffffff;
-	border-radius: 10px; */
 }
 
 .todoChanger__label {

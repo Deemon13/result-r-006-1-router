@@ -15,8 +15,6 @@ export const TodoItemCard = ({ userId, title, completed, id }) => {
 				<div className={styles.todo__user}>
 					User: {userId} - {title}
 				</div>
-
-				{/* <div></div> */}
 			</div>
 		</NavLink>
 	);

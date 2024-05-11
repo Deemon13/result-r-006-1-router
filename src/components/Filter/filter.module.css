@@ -1,16 +1,3 @@
-/* .filter {
-	max-width: 350px;
-	margin: 0 auto;
-	padding: 15px;
-	margin-bottom: 20px;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-
-	border: 1px solid #ffffff;
-	border-radius: 10px;
-} */
-
 .filter {
 	background-color: #fff9f0;
 	border-radius: 5px;
@@ -24,9 +11,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-
-	/* border: 1px solid #ffffff; */
-	/* border-radius: 10px; */
 }
 
 .filter__label {
@@ -46,6 +30,5 @@
 .filter__input:focus {
 	outline: 1px solid #ff6c00;
 	border-radius: 5px;
-	/* border-bottom: none; */
 	border-bottom-color: transparent;
 }

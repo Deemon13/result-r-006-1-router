@@ -1,15 +1,8 @@
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import styles from './app.module.css';
 
-const NotFound = () => (
-	<div>
-		Не корректный адрес
-		<Link to="/">Main Page</Link>
-	</div>
-);
-
-import { MainPage, TodoItem } from '../../components';
+import { MainPage, TodoItem, NotFound } from '../../components';
 
 export const App = () => {
 	return (

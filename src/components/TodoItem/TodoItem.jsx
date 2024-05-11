@@ -116,7 +116,6 @@ export const TodoItem = () => {
 				</div>
 			</div>
 			<div className={styles.todo__changer}>
-				{/* ToDoChanger */}
 				{isChanging && <TodoChanger onSubmit={submitChanges} title="Меняем!" />}
 			</div>
 		</div>

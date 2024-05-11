@@ -11,9 +11,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-
-	/* border: 1px solid #ffffff; */
-	/* border-radius: 10px; */
 }
 
 .createTodo__label {
@@ -33,7 +30,6 @@
 .createTodo__input:focus {
 	outline: 1px solid #ff6c00;
 	border-radius: 5px;
-	/* border-bottom: none; */
 	border-bottom-color: transparent;
 }
 

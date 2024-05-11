@@ -24,13 +24,9 @@ export const MainPage = () => {
 
 	return (
 		<>
-			{/* MainPage */}
 			<FormCreateTodo onSubmit={createTodo} isCreating={isCreating} />
-			{/* Filter */}
 			<Filter value={filter} onChange={e => handleFilter(e)} />
-			{/* Sorter */}
 			<Sorter onClick={handleSort} disabled={filter} title="По алфавиту!" />
-			{/* ToDoList */}
 			<div className={styles.todos}>
 				<h2 className={styles.todos__title}>Todo list</h2>
 				{isLoading ? (

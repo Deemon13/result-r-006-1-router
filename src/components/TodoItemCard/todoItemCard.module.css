@@ -1,15 +1,8 @@
 .todo__item {
-	/* width: 100px; */
-	/* height: 200px; */
-	/* display: flex;
-	flex-direction: column;
-	justify-content: space-between; */
 	padding: 5px;
 	border: 2px solid #323232;
 	border-radius: 5px;
 	text-align: left;
-
-	/* color: #323232; */
 }
 
 .todo__done {
@@ -28,55 +21,9 @@
 
 .todo__user {
 	font-weight: 600;
-	/* margin-top: 0;
-	margin-bottom: 0;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #ffffff;
-
-	text-transform: uppercase; */
 }
-
-/* .todo__title {
-	height: 100px;
-	margin-top: 0;
-	margin-bottom: 0;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #ffffff;
-	overflow-y: auto;
-	overflow-x: hidden;
-
-	word-break: break-all;
-} */
 
 .todo__link:hover {
 	background-color: #323232;
 	color: #ff6c00;
 }
-
-/* .todo__link:hover > .todo__user {
-	background-color: #323232;
-	color: #ff6c00;
-} */
-
-/* .todo__BTN {
-	width: 100%;
-	border: 1px solid #ffffff;
-	outline: none;
-	background-color: transparent;
-	border-radius: 5px;
-	padding: 2px;
-}
-
-.todo__BTN:hover {
-	cursor: pointer;
-	border-color: #adff2f;
-	color: #adff2f;
-}
-
-.todo__BTN:active {
-	transform: scale(0.9);
-}
-
-.todo__BTN:disabled {
-	pointer-events: none;
-} */
